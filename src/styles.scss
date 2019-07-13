@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
+
+$sm-width: 425px; // mobile
+$md-width: 768px; // tablet
+$lg-width: 1024px; // laptop
+
+body {
+    font-size: 14px;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+img {
+    max-width: 100%;
+}
+
+hr {
+    border: solid .5px lightgray;
+    margin: 2rem 0;
+}
+
+.float-right {
+    float: right;
+}
+
+.children-inline-block {
+    &>* {
+        display: inline-block;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+    max-width: $md-width;
+    width: 80vw;
+    margin: auto;
+
+    // mobile
+    @media screen and (max-width: $sm-width) {
+        width: calc(100% - 2rem);
+    }
+}
+
+header {
+    margin: 2rem 0;
+    height: 2.5rem;
+    position: relative;
+
+    // vertically centered content
+    &>* {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+footer {
+    opacity: .5;
+}
