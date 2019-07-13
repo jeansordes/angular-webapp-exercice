@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/purple-green.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
 
 $sm-width: 425px; // mobile
@@ -12,7 +12,7 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-h1 {
+h1, h2, h3 {
     font-weight: 300;
 }
 
@@ -50,6 +50,23 @@ hr {
     }
 }
 
+.margin-y-1rem {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.inline-block {
+    display: inline-block !important;
+}
+
+.display-block {
+    display: block !important;
+}
+
+button {
+    text-transform: uppercase;
+}
+
 header {
     margin: 2rem 0;
     height: 2.5rem;
@@ -57,6 +74,7 @@ header {
 
     // vertically centered content
     &>* {
+        display: inline-block;
         position: relative;
         top: 50%;
         transform: translateY(-50%);
@@ -64,5 +82,6 @@ header {
 }
 
 footer {
+    margin-top: 2rem;
     opacity: .5;
 }

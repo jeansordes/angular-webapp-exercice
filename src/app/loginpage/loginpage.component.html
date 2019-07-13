@@ -1,1 +1,24 @@
-<p>Connectez vous !</p>
+<div class="display-block text-center margin-y-1rem">
+    <mat-card class="inline-block">
+        <h2>Log in to AIM4Flight</h2>
+        <form (keyup.enter)="submitHandler()">
+            <mat-form-field class="display-block">
+                <input matInput placeholder="Username" type="text" [formControl]="usernameCtrl">
+                <mat-error *ngIf="usernameCtrl.invalid">Vous devez entrer un username</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="display-block">
+                <input matInput placeholder="Password" type="password" [formControl]="passwordCtrl">
+                <mat-error *ngIf="passwordCtrl.invalid">Vous devez entrer un mot de passe</mat-error>
+            </mat-form-field>
+
+            <p class="text-center">
+                <button mat-flat-button>Request an account</button>
+                &nbsp;
+                <button mat-flat-button color="primary" disabled="{{ !(this.passwordCtrl.valid && this.usernameCtrl) }}"
+                    (click)="submitHandler()">Log
+                    in</button>
+            </p>
+        </form>
+    </mat-card>
+</div>

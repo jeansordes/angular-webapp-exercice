@@ -1,15 +1,24 @@
-<div class="container">
-    <header>
-        <a routerLink="/">
-            <img src="/assets/logo_cgx.png" alt="">
-        </a>
-        <button routerLink="/login" class="float-right" mat-flat-button color="primary">Log in</button>
-    </header>
+<div [class]="isFirstLayout() ? 'container' : ''">
+    <div *ngIf="isFirstLayout()">
+        <header *ngIf="!isLoginPage()">
+            <a routerLink="/">
+                <img src="/assets/logo_cgx.png" alt="">
+            </a>
+    
+            <button *ngIf="!this.dataStore.isUserConnected()" routerLink="/login" mat-flat-button color="primary" class="float-right">Log in</button>
+            <button *ngIf="this.dataStore.isUserConnected()" (click)="logout()" mat-stroked-button class="float-right">Log out</button>
+        </header>
+    
+        <header *ngIf="isLoginPage()" class="text-center">
+            <a routerLink="/">
+                <img src="/assets/logo_cgx.png" alt="">
+            </a>
+        </header>
+    </div>
 
-    <!-- Content itself -->
     <router-outlet></router-outlet>
 
-    <footer>
+    <footer *ngIf="isFirstLayout()">
         <p>Site réalisé par <a href="https://www.jzs.fr">Jean Z. SORDES</a> dans le cadre d'un exercice demandé par <a
                 href="https://www.cgx-group.com">CGX Group</a> en Juillet 2019</p>
     </footer>
