@@ -12,16 +12,6 @@ export class FileStruct {
 export class DataStoreService {
     public ls = window.localStorage;
 
-    constructor() {
-        if (this.ls.username || !this.ls.localFiles || !Array.isArray(this.toJSON(this.ls.localFiles))) {
-            this.ls.localFiles = this.fromJSON([{
-                filename: 'Hello ' + this.getUsername() + ' !',
-                author: this.getUsername(),
-                createdOn: new Date()
-            }]);
-        }
-    }
-
     // utils
     fromJSON(o): string {
         return JSON.stringify(o);
@@ -84,7 +74,14 @@ export class DataStoreService {
 
     // files
     getFiles() {
-        return this.toJSON(this.ls.localFiles).map(el => ({ ...el, createdOn: new Date(el.createdOn) }));
+        if (this.ls.localFiles) {
+            return this.toJSON(this.ls.localFiles).map(el => ({ ...el, createdOn: new Date(el.createdOn) }));
+        } else {
+            this.ls.localFiles = this.fromJSON([{
+                filename: 'Welcome ' + this.getUsername() + ' :)', author: 'Root', createdOn: new Date()
+            }]);
+            return this.getFiles();
+        }
     }
 
     addFile(filenameInput: string) {
