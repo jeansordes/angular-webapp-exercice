@@ -15,7 +15,7 @@ export class AdminpageComponent {
     roleCtrl = new FormControl('', Validators.required); // Operator, Guest, Administrator
     maxDate = new Date();
 
-    constructor(private dataStore: DataStoreService, title: Title) {
+    constructor(public dataStore: DataStoreService, title: Title) {
         title.setTitle('Administration | Web App exercice');
     }
 

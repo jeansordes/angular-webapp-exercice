@@ -10,7 +10,7 @@ export class FileStruct {
     providedIn: 'root'
 })
 export class DataStoreService {
-    private ls = window.localStorage;
+    public ls = window.localStorage;
 
     constructor() {
         if (this.ls.username || !this.ls.localFiles || !Array.isArray(this.toJSON(this.ls.localFiles))) {

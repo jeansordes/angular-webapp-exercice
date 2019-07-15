@@ -23,7 +23,7 @@ export class FilespageComponent implements OnInit {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-    constructor(private dataStore: DataStoreService, title: Title) {
+    constructor(public dataStore: DataStoreService, title: Title) {
         title.setTitle('Files | Web App exercice');
     }
 

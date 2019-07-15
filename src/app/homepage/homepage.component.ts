@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomepageComponent {
 
-    constructor(private router: Router, private dataStore: DataStoreService, title: Title) {
+    constructor(public router: Router, public dataStore: DataStoreService, title: Title) {
         title.setTitle('Home page | Web App exercice');
     }
 

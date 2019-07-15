@@ -9,9 +9,9 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class DrawerLayoutComponent implements OnDestroy {
     mobileQuery: MediaQueryList;
-    private mobileQueryListener: () => void;
+    public mobileQueryListener: () => void;
 
-    constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router, private dataStore: DataStoreService) {
+    constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public router: Router, public dataStore: DataStoreService) {
         if (!dataStore.isUserConnected()) {
             router.navigateByUrl('/login');
         }

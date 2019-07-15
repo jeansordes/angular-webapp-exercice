@@ -13,7 +13,7 @@ export class LoginpageComponent {
     usernameCtrl = new FormControl('', [Validators.required]);
     passwordCtrl = new FormControl('', [Validators.required]);
 
-    constructor(private router: Router, private dataStore: DataStoreService, title: Title) {
+    constructor(public router: Router, public dataStore: DataStoreService, title: Title) {
         if (dataStore.isUserConnected()) {
             router.navigateByUrl('/');
         }
