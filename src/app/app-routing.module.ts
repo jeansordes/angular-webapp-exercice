@@ -5,13 +5,22 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { FilespageComponent } from './filespage/filespage.component';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
 
 const routes: Routes = [
-    { path: '', component: HomepageComponent},
-    { path: 'login', component: LoginpageComponent},
-    { path: 'files', component: FilespageComponent},
-    { path: 'admin', component: AdminpageComponent},
-    { path: '**', component: NotFoundComponent}
+    { path: '', component: HomepageComponent },
+    { path: 'login', component: LoginpageComponent },
+    {
+        path: 'files', component: DrawerLayoutComponent, children: [
+            { path: '', component: FilespageComponent, outlet: 'drawer-layout' },
+        ]
+    },
+    {
+        path: 'admin', component: DrawerLayoutComponent, children: [
+            { path: '', component: AdminpageComponent, outlet: 'drawer-layout' },
+        ]
+    },
+    { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

@@ -1,1 +1,54 @@
-<p>filespage works!</p>
+<mat-toolbar color="primary">Files</mat-toolbar>
+
+<div class="padding-1rem padding-y-2rem">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort matSortActive="filename" matSortDirection="asc">
+
+        <!-- filename Column -->
+        <ng-container matColumnDef="filename">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> File name </th>
+            <td mat-cell *matCellDef="let row" class="bold"> {{row.filename}} </td>
+        </ng-container>
+
+        <!-- Author Column -->
+        <ng-container matColumnDef="author">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
+            <td mat-cell *matCellDef="let row" class="light"> {{row.author}} </td>
+        </ng-container>
+
+        <!-- CreatedOn Column -->
+        <ng-container matColumnDef="createdOn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Creation date </th>
+            <td mat-cell *matCellDef="let row" class="light"> {{this.ago(row.createdOn)}} </td>
+        </ng-container>
+
+        <!-- Download Column -->
+        <ng-container matColumnDef="download">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row" class="light">
+                <button (click)="downloadFile(row)" mat-icon-button>
+                    <mat-icon>save_alt</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Add new file" type="text" [formControl]="filenameCtrl" autocomplete="off">
+
+            <button mat-button matSuffix mat-fab-button aria-label="Add" [disabled]="!this.filenameCtrl.valid"
+                (click)="submitHandler()">
+                <mat-icon>note_add</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+</div>

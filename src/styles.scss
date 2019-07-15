@@ -1,18 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
 
 $sm-width: 425px; // mobile
 $md-width: 768px; // tablet
 $lg-width: 1024px; // laptop
 
+$primary-color: #673ab7;
+
 body {
+    min-height: 100vh;
     font-size: 14px;
     margin: 0;
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 300;
 }
 
@@ -55,6 +59,19 @@ hr {
     margin-bottom: 1rem;
 }
 
+.margin-1rem {
+    margin: 1rem;
+}
+
+.padding-1rem {
+    padding: 1rem;
+}
+
+.padding-y-2rem {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
 .inline-block {
     display: inline-block !important;
 }
@@ -84,4 +101,60 @@ header {
 footer {
     margin-top: 2rem;
     opacity: .5;
+}
+
+mat-drawer-container {
+    min-height: 100vh;
+}
+
+mat-drawer>* {
+    width: 17rem !important;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+.bolder {
+    font-weight: 600;
+}
+
+.light {
+    color: darkgray;
+}
+
+.primary {
+    color: $primary-color;
+}
+
+.menu-btn {
+    position: fixed;
+    bottom: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    background: none !important;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-column-filename {
+    width: 50%;
+}
+
+.mat-column-author {
+    width: 15%;
+}
+
+.mat-column-createdOn {
+    width: 30%;
+}
+
+.mat-column-download {
+    width: 5%;
 }

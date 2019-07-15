@@ -1,0 +1,25 @@
+<mat-drawer-container>
+    <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="mobileQuery.matches ? false : true">
+        <header class="margin-1rem">
+            <a routerLink="/">
+                <img src="/assets/logo_cgx.png" alt="" width="92px" height="22px">
+            </a>
+            <button (click)="logout()" mat-flat-button color="primary" class="float-right">Log out</button>
+        </header>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+            <a routerLink="/files" mat-list-item><span
+                    [class]="this.router.url === '/files' ? 'bolder primary' : ''">Files</span></a>
+            <a routerLink="/admin" mat-list-item><span
+                    [class]="this.router.url === '/admin' ? 'bolder primary' : ''">Administration</span></a>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <span *ngIf="mobileQuery.matches" class="menu-btn">
+            <button mat-mini-fab color="primary" (click)="snav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </span>
+        <router-outlet name="drawer-layout"></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

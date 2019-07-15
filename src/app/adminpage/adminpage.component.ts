@@ -8,10 +8,7 @@ import { DataStoreService } from '../data-store.service';
 })
 export class AdminpageComponent implements OnInit {
 
-    constructor(private router: Router, private dataStore: DataStoreService) {
-        if (!dataStore.isUserConnected()) {
-            router.navigateByUrl('/login');
-        }
+    constructor() {
     }
 
     ngOnInit() {

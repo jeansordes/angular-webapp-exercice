@@ -1,4 +1,10 @@
-<div class="display-block text-center margin-y-1rem">
+<div class="display-block text-center">
+    <header>
+        <a routerLink="/">
+            <img src="/assets/logo_cgx.png" alt="">
+        </a>
+    </header>
+
     <mat-card class="inline-block">
         <h2>Log in to AIM4Flight</h2>
         <form (keyup.enter)="submitHandler()">
@@ -21,4 +27,6 @@
             </p>
         </form>
     </mat-card>
+
+    <app-footer></app-footer>
 </div>
