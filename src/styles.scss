@@ -43,6 +43,10 @@ hr {
     text-align: center;
 }
 
+.text-left {
+    text-align: left;
+}
+
 .container {
     max-width: $md-width;
     width: 80vw;
@@ -51,6 +55,42 @@ hr {
     // mobile
     @media screen and (max-width: $sm-width) {
         width: calc(100% - 2rem);
+    }
+}
+
+.inline-block {
+    display: inline-block !important;
+}
+
+.display-block {
+    display: block !important;
+}
+
+button,
+.button {
+    text-transform: uppercase;
+}
+
+header {
+    padding: 2rem 0;
+    height: 2.5rem;
+    position: relative;
+
+    // vertically centered content
+    &>* {
+        display: inline-block;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+footer {
+    padding-top: 2rem;
+    opacity: .5;
+
+    p {
+        margin: 0;
     }
 }
 
@@ -70,37 +110,6 @@ hr {
 .padding-y-2rem {
     padding-left: 2rem;
     padding-right: 2rem;
-}
-
-.inline-block {
-    display: inline-block !important;
-}
-
-.display-block {
-    display: block !important;
-}
-
-button {
-    text-transform: uppercase;
-}
-
-header {
-    margin: 2rem 0;
-    height: 2.5rem;
-    position: relative;
-
-    // vertically centered content
-    &>* {
-        display: inline-block;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-}
-
-footer {
-    margin-top: 2rem;
-    opacity: .5;
 }
 
 mat-drawer-container {
@@ -134,13 +143,13 @@ mat-drawer>* {
     text-align: center;
 }
 
+.drawer-layout .mat-form-field {
+    width: 100%;
+}
+
 table {
     width: 100%;
     background: none !important;
-}
-
-.mat-form-field {
-    width: 100%;
 }
 
 .mat-column-filename {
@@ -157,4 +166,8 @@ table {
 
 .mat-column-download {
     width: 5%;
+}
+
+.red {
+    color: red;
 }

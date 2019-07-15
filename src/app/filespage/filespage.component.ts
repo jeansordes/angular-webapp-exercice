@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataStoreService } from '../data-store.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { FormControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 export interface FileData {
     filename: string;
@@ -22,7 +23,9 @@ export class FilespageComponent implements OnInit {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-    constructor(private dataStore: DataStoreService) { }
+    constructor(private dataStore: DataStoreService, title: Title) {
+        title.setTitle('Files | Web App exercice');
+    }
 
     ngOnInit() {
         // Assign the data to the data source for the table to render
@@ -40,12 +43,8 @@ export class FilespageComponent implements OnInit {
         }
     }
 
-    downloadFile(file: FileData) {
-        const tmp = document.createElement('a');
-        tmp.download = file.filename + '_infos.txt';
-        tmp.href = window.URL.createObjectURL(new Blob([JSON.stringify(file)], { type: 'application/json' }));
-        tmp.click();
-        tmp.remove();
+    downloadFile(el) {
+        this.dataStore.downloadFile(el, el.filename + '_infos.txt');
     }
 
     submitHandler() {
@@ -56,9 +55,5 @@ export class FilespageComponent implements OnInit {
 
             this.ngOnInit();
         }
-    }
-
-    ago(e: Date): string {
-        return this.dataStore.timeSince(e);
     }
 }

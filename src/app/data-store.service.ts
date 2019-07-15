@@ -13,11 +13,12 @@ export class DataStoreService {
     private ls = window.localStorage;
 
     constructor() {
-        if (!this.ls.username) {
-            this.ls.username = '';
-        }
-        if (!this.ls.localFiles || !Array.isArray(this.toJSON(this.ls.localFiles))) {
-            this.ls.localFiles = '[]';
+        if (this.ls.username || !this.ls.localFiles || !Array.isArray(this.toJSON(this.ls.localFiles))) {
+            this.ls.localFiles = this.fromJSON([{
+                filename: 'Hello ' + this.getUsername() + ' !',
+                author: this.getUsername(),
+                createdOn: new Date()
+            }]);
         }
     }
 
@@ -28,6 +29,14 @@ export class DataStoreService {
 
     toJSON(o: string) {
         return JSON.parse(o);
+    }
+
+    downloadFile(el, filename) {
+        const tmp = document.createElement('a');
+        tmp.download = filename;
+        tmp.href = window.URL.createObjectURL(new Blob([JSON.stringify(el)], { type: 'application/json' }));
+        tmp.click();
+        tmp.remove();
     }
 
     timeSince(date: Date): string {
@@ -70,7 +79,7 @@ export class DataStoreService {
     }
 
     isUserConnected() {
-        return this.ls.username !== '';
+        return this.ls.username && true;
     }
 
     // files

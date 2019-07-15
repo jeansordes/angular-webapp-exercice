@@ -10,26 +10,26 @@
         <!-- filename Column -->
         <ng-container matColumnDef="filename">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> File name </th>
-            <td mat-cell *matCellDef="let row" class="bold"> {{row.filename}} </td>
+            <td mat-cell *matCellDef="let row" class="bold"> {{ row.filename }} </td>
         </ng-container>
 
         <!-- Author Column -->
         <ng-container matColumnDef="author">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
-            <td mat-cell *matCellDef="let row" class="light"> {{row.author}} </td>
+            <td mat-cell *matCellDef="let row" class="light"> {{ row.author }} </td>
         </ng-container>
 
         <!-- CreatedOn Column -->
         <ng-container matColumnDef="createdOn">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Creation date </th>
-            <td mat-cell *matCellDef="let row" class="light"> {{this.ago(row.createdOn)}} </td>
+            <td mat-cell *matCellDef="let row" class="light" [matTooltip]="row.createdOn.toString()" matTooltipPosition="above"> {{ this.dataStore.timeSince(row.createdOn) }} </td>
         </ng-container>
 
         <!-- Download Column -->
         <ng-container matColumnDef="download">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let row" class="light">
-                <button (click)="downloadFile(row)" mat-icon-button>
+                <button (click)="downloadFile(row)" mat-icon-button matTooltip="Download as a .txt file" matTooltipPosition="above">
                     <mat-icon>save_alt</mat-icon>
                 </button>
             </td>

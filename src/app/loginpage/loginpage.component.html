@@ -1,4 +1,4 @@
-<div class="display-block text-center">
+<div class="container display-block text-center">
     <header>
         <a routerLink="/">
             <img src="/assets/logo_cgx.png" alt="">
@@ -9,17 +9,21 @@
         <h2>Log in to AIM4Flight</h2>
         <form (keyup.enter)="submitHandler()">
             <mat-form-field class="display-block">
-                <input matInput placeholder="Username" type="text" [formControl]="usernameCtrl">
-                <mat-error *ngIf="usernameCtrl.invalid">Vous devez entrer un username</mat-error>
+                <input matInput placeholder="Username" type="text" [formControl]="usernameCtrl" required>
+                <mat-error *ngIf="usernameCtrl.invalid">Username is required</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field class="display-block">
-                <input matInput placeholder="Password" type="password" [formControl]="passwordCtrl">
-                <mat-error *ngIf="passwordCtrl.invalid">Vous devez entrer un mot de passe</mat-error>
+                <input matInput placeholder="Password" type="password" [formControl]="passwordCtrl" required>
+                <mat-error *ngIf="passwordCtrl.invalid">Password is required</mat-error>
             </mat-form-field>
 
-            <p class="text-center">
-                <button mat-flat-button>Request an account</button>
+            <p class="text-left">
+                <a (click)="displayHelp()" routerLink=".">Forgot password ?</a>
+            </p>
+
+            <p>
+                <a class="button" mat-flat-button (click)="displayHelp()">Request an account</a>
                 &nbsp;
                 <button mat-flat-button color="primary" disabled="{{ !(this.passwordCtrl.valid && this.usernameCtrl) }}"
                     (click)="submitHandler()">Log

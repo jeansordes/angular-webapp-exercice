@@ -1,10 +1,10 @@
-<mat-drawer-container>
+<mat-drawer-container class="drawer-layout">
     <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="mobileQuery.matches ? false : true">
-        <header class="margin-1rem">
+        <header class="padding-1rem">
             <a routerLink="/">
                 <img src="/assets/logo_cgx.png" alt="" width="92px" height="22px">
             </a>
-            <button (click)="logout()" mat-flat-button color="primary" class="float-right">Log out</button>
+            <button (click)="logout()" mat-stroked-button color="primary" class="float-right">Log out</button>
         </header>
         <mat-divider></mat-divider>
         <mat-nav-list>

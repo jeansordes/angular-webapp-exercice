@@ -9,7 +9,7 @@ import {
     MatButtonModule, MatFormFieldModule, MatInputModule,
     MatCardModule, MatSidenavModule, MatDividerModule,
     MatListModule, MatToolbarModule, MatIconModule,
-    MatTableModule, MatSortModule, MatPaginatorModule
+    MatTableModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatTooltipModule
 } from '@angular/material';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
@@ -48,7 +48,11 @@ import { FooterComponent } from './footer.component';
         MatIconModule,
         MatTableModule,
         MatSortModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSelectModule,
+        MatTooltipModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,2 +1,50 @@
 <mat-toolbar color="primary">Administration</mat-toolbar>
-<p>Yep, admin page</p>
+
+<div class="padding-1rem padding-y-2rem">
+    <h1>Create a new user</h1>
+    <form>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="Firstname" type="text" [formControl]="firstnameCtrl" autocomplete="off"
+                    required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="Lastname" type="text" [formControl]="lastnameCtrl" autocomplete="off"
+                    required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput [matDatepicker]="dp" [max]="this.maxDate" placeholder="Birth date"
+                    [formControl]="birthdateCtrl" autocomplete="off" required>
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="Email adress" type="email" email [formControl]="emailCtrl"
+                    autocomplete="off">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Role</mat-label>
+                <mat-select matNativeControl required [formControl]="roleCtrl">
+                    <mat-option value="Operator">Operator</mat-option>
+                    <mat-option value="Guest">Guest</mat-option>
+                    <mat-option value="Administrator">Administrator</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="text-center">
+            <button mat-flat-button aria-label="Add a user" color="primary" [disabled]="!this.formIsValid()"
+                (click)="submitHandler()">
+                <mat-icon>person_add</mat-icon> Create user file
+            </button>
+        </div>
+        <p class="text-left"><span class="red">*</span> Required fields</p>
+    </form>
+</div>
